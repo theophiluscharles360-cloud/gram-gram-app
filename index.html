@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GRAM GRAM</title>
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#0066FF">
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
+    body { background: #FFFFFF; color: #000; }
+
+   .logo { color: #000; font-size: 28px; font-weight: 900; text-align: center; padding: 15px; }
+   .logo span { color: #0066FF; }
+
+   .page { display: none; padding: 20px; padding-bottom: 90px; }
+   .page.active { display: block; }
+
+   .bottom-menu {
+      position: fixed; bottom: 0; width: 100%;
+      background: white; display: flex; justify-content: space-around;
+      padding: 8px 0; border-top: 1px solid #ddd; z-index: 999;
+    }
+   .menu-item { text-align: center; color: #888; font-size: 11px; cursor: pointer; }
+   .menu-item.active { color: #0066FF; font-weight: bold; }
+   .menu-icon { font-size: 22px; display: block; }
+
+   .card { background: #F5F5F5; padding: 15px; border-radius: 12px; margin: 15px 0; }
+   .btn { width: 100%; padding: 12px; background: #0066FF; color: white; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; }
+    input, textarea { width: 100%; padding: 10px; margin: 8px 0; border: 1px solid #ddd; border-radius: 8px; }
+   .chat-box { height: 400px; overflow-y: auto; background: #F0F0F0; padding: 10px; border-radius: 10px; }
+   .msg { background: #0066FF; color: white; padding: 8px 12px; border-radius: 15px; margin: 5px 0; max-width: 70%; }
+   .post { background: white; border: 1px solid #ddd; border-radius: 12px; padding: 10px; margin: 15px 0; }
+   .post img { width: 100%; border-radius: 10px; }
+   .live-box { background: #000; color: white; height: 300px; border-radius: 12px; display: flex; align-items: center; justify-content: center; }
+  </style>
+</head>
+<body>
+
+  <!-- 1. HOME / POST -->
+  <div id="home" class="page active">
+    <h1 class="logo"><span>GR</span>AM <span>GR</span>AM</h1>
+    <div class="card">
+      <h3>Post Your Photo</h3>
+      <input type="file" accept="image/*">
+      <textarea placeholder="Write caption..."></textarea>
+      <button class="btn">POST</button>
+    </div>
+    <div class="post">
+      <b>@user1</b>
+      <p>Beautiful day today </p>
+      <img src="https://via.placeholder.com/400/0066FF/FFFFFF?text=POST">
+      <p> 24 Likes</p>
+    </div>
+  </div>
+
+  <!-- 2. CHAT -->
+  <div id="chat" class="page">
+    <h1 class="logo"><span>GR</span>AM <span>GR</span>AM</h1>
+    <h3>Chat</h3>
+    <div class="chat-box">
+      <div class="msg">Hello!</div>
+      <div class="msg" style="background:#ddd; color:#000; margin-left:auto;">Hey, how are you?</div>
+    </div>
+    <input type="text" placeholder="Type message...">
+    <button class="btn">SEND</button>
+  </div>
+
+  <!-- 3. REELS -->
+  <div id="reels" class="page">
+    <h1 class="logo"><span>GR</span>AM <span>GR</span>AM</h1>
+    <h3>Reels</h3>
+    <div class="card">
+      <video width="100%" controls></video>
+      <p>Your reel will appear here</p>
+      <input type="file" accept="video/*">
+      <button class="btn">UPLOAD REEL</button>
+    </div>
+  </div>
+
+  <!-- 4. LIVE -->
+  <div id="live" class="page">
+    <h1 class="logo"><span>GR</span>AM <span>GR</span>AM</h1>
+    <h3>Live</h3>
+    <div class="live-box">Click to start LIVE</div>
+    <button class="btn">GO LIVE</button>
+  </div>
+
+  <!-- 5. CALL -->
+  <div id="call" class="page">
+    <h1 class="logo"><span>GR</span>AM <span>GR</span>AM</h1>
+    <h3>Video / Audio Call</h3>
+    <div class="card">
+      <p>Call your friend</p>
+      <input type="text" placeholder="Enter Username">
+      <button class="btn">VIDEO CALL</button>
+      <button class="btn" style="background:#28a745; margin-top:10px;">AUDIO CALL</button>
+    </div>
+  </div>
+
+  <!-- 6. MONETIZATION -->
+  <div id="money" class="page">
+    <h1 class="logo"><span>GR</span>AM <span>GR</span>AM</h1>
+    <h3>Monetization </h3>
+    <div class="card">
+      <p>Earn money with:</p>
+      <p>1. Gifts in Live</p>
+      <p>2. Ads</p>
+      <p>3. Subscriptions</p>
+      <button class="btn">LINK M-PESA</button>
+    </div>
+  </div>
+
+  <!-- 7. RESTORATION -->
+  <div id="restore" class="page">
+    <h1 class="logo"><span>GR</span>AM <span>GR</span>AM</h1>
+    <h3>Restoration</h3>
+    <div class="card">
+      <p>Recover your account</p>
+      <input type="text" placeholder="Enter Email or Number">
+      <button class="btn">RECOVER ACCOUNT</button>
+      <p style="font-size:12px; margin-top:10px;">We will send you a recovery code</p>
+    </div>
+  </div>
+
+  <!-- BOTTOM MENU -->
+  <div class="bottom-menu">
+    <div class="menu-item active" onclick="showPage('home')"><span class="menu-icon"></span>Home</div>
+    <div class="menu-item" onclick="showPage('chat')"><span class="menu-icon"></span>Chat</div>
+    <div class="menu-item" onclick="showPage('reels')"><span class="menu-icon"></span>Reels</div>
+    <div class="menu-item" onclick="showPage('live')"><span class="menu-icon"></span>Live</div>
+    <div class="menu-item" onclick="showPage('call')"><span class="menu-icon"></span>Call</div>
+    <div class="menu-item" onclick="showPage('money')"><span class="menu-icon"></span>Money</div>
+    <div class="menu-item" onclick="showPage('restore')"><span class="menu-icon"></span>Restore</div>
+  </div>
+
+  <script>
+    function showPage(pageId) {
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+      document.getElementById(pageId).classList.add('active');
+
+      document.querySelectorAll('.menu-item').forEach(m => m.classList.remove('active'));
+      event.currentTarget.classList.add('active');
+    }
+  </script>
+
+</body>
+</html>
